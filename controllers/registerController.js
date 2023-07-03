@@ -1,6 +1,6 @@
 const Student = require('../model/infoSchema');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+// const bcrypt = require('bcrypt');
+// const jwt = require('jsonwebtoken');
 const Messages = require('../Changes/serverMessages');
 
 const handleNewUser = async (req, res) => {

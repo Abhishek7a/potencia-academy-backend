@@ -1,28 +1,32 @@
-const Student = require('../model/careerSchema');
+const Student = require('../model/ContactUsSchema');
 const Messages = require('../Changes/serverMessages');
 
-const handleCareerUser = async (req, res) => {
+const handleContactUsUser = async (req, res) => {
 
     const requestArray = req.body;
     const Name = requestArray.name;
-    const LastSallary = requestArray.lastSallary;
+    const email = requestArray.email;
+    const subject = requestArray.subject;
+    const message = requestArray.message;
 
     console.log(req.body)
-    if (!Name || !Subject || !Experience || !Resume || !LastSallary)
+    if (!Name || !subject || !email || !message)
         return res.status(422).json({ error: Messages.EmptyFields });
 
     if (Name.length < 3)
         return res.status(406).json({ error: Messages.InvalidCredentials });
 
-    if (LastSallary.length == 0)
+    if (subject.length < 5)
+        return res.status(406).json({ error: Messages.InvalidCredentials });
+
+    if (message.length < 5)
         return res.status(406).json({ error: Messages.InvalidCredentials });
     try {
         const student = await Student.create({
             Name: Name,
-            Subject: Subject,
-            Experience: Experience,
-            Resume: Resume,
-            LastSallary: LastSallary
+            email: email,
+            subject: subject,
+            message: message
         })
         const userID = student._id;
         console.log("User ID", userID);
@@ -33,4 +37,4 @@ const handleCareerUser = async (req, res) => {
         return res.status(500).json({ error: Messages.ServerErr });
     }
 }
-module.exports = { handleCareerUser };
+module.exports = { handleContactUsUser };
