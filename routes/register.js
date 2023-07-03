@@ -5,6 +5,6 @@ const careerController = require('../controllers/careerController');
 
 router.post('/register', registerController.handleNewUser);
 router.post('/career', careerController.handleCareerUser);
-router.get("/check", (req,res) => res.json({message: "SetUp Success Yay!!"}));
+router.get("/check", (req,res) => res.status(200).json({message: "SetUp Success Yay!!"}));
 
 module.exports = router;
