@@ -11,11 +11,11 @@ const ContactUsSchema=new Schema({
    required:true,
    uniqe:true
  },
- Subject:{
+ subject:{
    type:String,
    required:true,
  },
- Message:{
+ message:{
    type:String,
    required:true,
  },

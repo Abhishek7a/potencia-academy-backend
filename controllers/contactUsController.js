@@ -1,4 +1,4 @@
-const Student = require('../model/ContactUsSchema');
+const ContactUsSchema = require('../model/ContactUsSchema');
 const Messages = require('../Changes/serverMessages');
 
 const handleContactUsUser = async (req, res) => {
@@ -22,8 +22,8 @@ const handleContactUsUser = async (req, res) => {
     if (message.length < 5)
         return res.status(406).json({ error: Messages.InvalidCredentials });
     try {
-        const student = await Student.create({
-            Name: Name,
+        const student = await ContactUsSchema.create({
+            name: Name,
             email: email,
             subject: subject,
             message: message
@@ -33,7 +33,7 @@ const handleContactUsUser = async (req, res) => {
         res.status(201).json({ message: Messages.Success });
     }
     catch (err) {
-        // console.log(err);
+        console.log(err);
         return res.status(500).json({ error: Messages.ServerErr });
     }
 }

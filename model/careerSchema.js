@@ -6,17 +6,17 @@ const careerSchema = new Schema({
         type: String,
         required: true,
     },
-    Subject: {
+    Specialization: {
         type: String,
         required: true,
     },
     Experience: {
-        type: String,
+        type: Number,
         required: true,
     },
     Resume: {
         type: String,
-        required: true,
+        // required: true,
     },
     LastSalary: {
         type: Number,

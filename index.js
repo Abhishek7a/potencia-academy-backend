@@ -17,7 +17,6 @@ app.use((req, res) => {
     res.status(404).json('Page not found');
   });
   
-//   router.post('/register', registerController.handleNewUser);
 
 mongoose.connection.once('open', () => {
     console.log("Connected to DB");
