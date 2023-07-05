@@ -11,14 +11,14 @@ const handleCareerUser = async (req, res) => {
     const LastSalary = requestArray.lastSalary;
 
     console.log(req.body)
-    // if (!Name || !Subject || !Experience  || !LastSallary)
-    //     return res.status(422).json({ error: Messages.EmptyFields });
+    if (!Name || !Specialization || !Experience  || !LastSalary)
+        return res.status(422).json({ error: Messages.EmptyFields });
 
     if (Name.length < 3)
         return res.status(406).json({ error: Messages.InvalidCredentials });
 
-    // if (LastSallary.length == 0)
-        // return res.status(406).json({ error: Messages.InvalidCredentials });
+    if (LastSallary.length == 0)
+        return res.status(406).json({ error: Messages.InvalidCredentials });
     try {
         const student = await careerSchema.create({
             Name: Name,
