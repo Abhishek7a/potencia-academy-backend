@@ -8,6 +8,9 @@ const connectDB = async () => {
             useUnifiedTopology: true,
             useNewUrlParser: true
         });
+        // const db = client.db(dbName);
+        // const bucket = new GridFSBucket(db);
+      
     }
     catch (err) {
         console.log('Error connecting to MongoDB');

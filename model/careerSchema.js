@@ -15,6 +15,8 @@ const careerSchema = new Schema({
         required: true,
     },
     Resume: {
+        // type: Schema.Types.ObjectId,
+        // ref: 'File',
         type: String,
         // required: true,
     },
