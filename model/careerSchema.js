@@ -18,6 +18,8 @@ const careerSchema = new Schema({
         // type: Schema.Types.ObjectId,
         // ref: 'File',
         type: String,
+        // data:Buffer,
+        // contentType:String
         // required: true,
     },
     LastSalary: {
