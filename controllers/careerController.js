@@ -34,7 +34,7 @@ const handleCareerUser = async (req, res) => {
             Resume: Resume,
             LastSalary: LastSalary
         })
-        res.status(201).json({ message: Messages.Success });
+        res.status(201).json({ message: Messages.Success,path:Resume });
     }
     catch (err) {
         console.log(err.message);
