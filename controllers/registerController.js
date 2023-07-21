@@ -9,6 +9,7 @@ const handleNewUser = async (req, res) => {
     const StudentFatherName = requestArray.fatherName;
     const StudentClass = requestArray.classs;
     const StudentContact = requestArray.contact;
+    // Validations
     if (!StudentName || !StudentEmail || !StudentFatherName || !StudentClass || !StudentContact) {
         return res.status(422).json({ error: Messages.EmptyFields });
     }
@@ -21,10 +22,18 @@ const handleNewUser = async (req, res) => {
     if (StudentContact.length != 10) {
         return res.status(406).json({ error: Messages.InvalidCredentials });
     }
+    // Check user is exist or not
     const userExist = await Student.findOne({ StudentEmail: StudentEmail });
     if (userExist) {
         return res.status(409).json({ error: Messages.UserExist });
     }
+    /*
+       Route         /register
+       Descrip       User can apply for the scholorship.
+       Params        None
+       Access        Public
+       Method        POST
+   */
     try {
         const student = await Student.create({
             StudentName: StudentName,

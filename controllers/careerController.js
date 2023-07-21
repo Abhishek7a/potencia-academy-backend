@@ -9,15 +9,22 @@ const handleCareerUser = async (req, res) => {
     const Experience = parseInt(requestArray.experience);
     const LastSalary = parseInt(requestArray.lastSalary);
     const Resume = req.file;
-    
-    if (!Name || !Specialization || !Experience || !Resume|| !LastSalary)
-    return res.status(422).json({ error: Messages.EmptyFields });
-    
+    //Validations 
+    if (!Name || !Specialization || !Experience || !Resume || !LastSalary)
+        return res.status(422).json({ error: Messages.EmptyFields });
+
     if (Name.length < 3)
-    return res.status(406).json({ error: Messages.InvalidCredentials });
-    
+        return res.status(406).json({ error: Messages.InvalidCredentials });
+
     if (LastSalary.length == 0)
-    return res.status(406).json({ error: Messages.InvalidCredentials });
+        return res.status(406).json({ error: Messages.InvalidCredentials });
+    /*
+        Route         /career
+        Descrip       User give detals for job
+        Params        None
+        Access        Public
+        Method        POST
+    */
     try {
         const Resume = req.file.path;
         const student = await careerSchema.create({

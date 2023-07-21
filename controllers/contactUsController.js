@@ -8,8 +8,7 @@ const handleContactUsUser = async (req, res) => {
     const email = requestArray.email;
     const subject = requestArray.subject;
     const message = requestArray.message;
-
-    console.log(req.body)
+    // Validations
     if (!Name || !subject || !email || !message)
         return res.status(422).json({ error: Messages.EmptyFields });
 
@@ -21,6 +20,13 @@ const handleContactUsUser = async (req, res) => {
 
     if (message.length < 5)
         return res.status(406).json({ error: Messages.InvalidCredentials });
+    /*
+        Route         /contacUs
+        Descrip       User can feedback / contact with us.
+        Params        None
+        Access        Public
+        Method        POST
+    */
     try {
         const student = await ContactUsSchema.create({
             name: Name,
