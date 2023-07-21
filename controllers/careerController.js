@@ -8,8 +8,9 @@ const handleCareerUser = async (req, res) => {
     const Specialization = requestArray.specialization;
     const Experience = parseInt(requestArray.experience);
     const LastSalary = parseInt(requestArray.lastSalary);
-
-    if (!Name || !Specialization || !Experience || !LastSalary)
+    const Resume = req.file;
+    
+    if (!Name || !Specialization || !Experience || !Resume|| !LastSalary)
     return res.status(422).json({ error: Messages.EmptyFields });
     
     if (Name.length < 3)
